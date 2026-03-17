@@ -1,105 +1,48 @@
-= PROJECT ANALYSIS AND CONCEPTS
+= PROJECT ANALYSIS
 
-This chapter presents the analysis and design concepts of the *cdcIRM* mobile application.
-It defines the problem scope, functional and non-functional requirements, core use cases,
-system data design, and workflow diagrams used to guide implementation.
+The system analysis phase involved translating the CDC’s institutional goals into a set of technical mandates. This section outlines the functional and non-functional requirements that governed the development of the cdcIRM platform.
 
-The objective of this chapter is to translate internship project goals into a clear technical
-plan that can be implemented, tested, and maintained within the CDC working environment.
-
-== Problem Analysis
-
-The Council for the Development of Cambodia, especially within the Information Technology
-and Public Relation Directorate, handles frequent communication with investors, partners,
-and stakeholders. In practice, communication workflows are often slowed down by three main issues:
-
-- *Fragmented communication flow:* Staff use standard email tools that are not optimized for investor relation workflows.
-- *Manual contact entry:* Business cards and contact details are often entered manually, which is time-consuming and error-prone.
-- *Follow-up inconsistency:* Important investor conversations may require reminders and follow-up actions, but these are often tracked manually.
-
-To address these challenges, the *cdcIRM* project was designed as a mobile-first investor communication
-tool that combines email, contact extraction, and follow-up assistance into one application.
-
-== System Scope and Concept
-
-The proposed system is a specialized mobile client for internal CDC staff use. It is not intended to replace
-existing enterprise email infrastructure. Instead, it acts as a productivity layer on top of CDC backend services.
-
-The application provides:
-- Secure authentication for authorized CDC staff
-- Email inbox and message management
-- OCR-based contact extraction from business cards or IDs
-- Follow-up reminders and AI-assisted drafting support
-- Contact-centered investor communication tracking
-
-The system concept emphasizes:
-- *Speed:* fewer steps to process emails and contacts
-- *Clarity:* a focused interface for official communication
-- *Security:* controlled access using token-based authentication
-- *Extensibility:* modular architecture for future features
-
-#pagebreak()
-
-== Functional Requirements
-
-Functional requirements define what the system must do from the user perspective.
+== Requirements Specification
+=== Functional Requirements
+Functional requirements define the specific actions and behaviors the application must perform to satisfy user needs:
 
 // @typstyle off
 #figure(
   table(
     columns: (1fr, 4fr, 8fr),
-    inset: 4pt,
+    inset: 6pt,
+    align: center + horizon,
     table.header([*ID*], [*Feature*], [*Description*]),
 
     [1],
-    [User Authentication],
-    align(left)[The system shall allow CDC staff to log in securely using credentials provided by the organization backend.],
+    [Email Linking],
+    align(left)[Allow the user to link their mailboxes from various email providers],
 
     [2],
-    [Profile Retrieval],
-    align(left)[The system shall retrieve and display the authenticated user profile (name, role, language preference, and contact information).],
-
-    [3],
     [Inbox Listing],
     align(left)[The system shall display a list of email messages with essential metadata such as sender, subject, timestamp, and status (read/unread).],
 
-    [4],
-    [Email Detail View],
-    align(left)[The system shall display full email content and attachments metadata when a message is selected.],
-
-    [5],
-    [Compose and Send Email],
-    align(left)[The system shall allow users to compose, reply to, and forward messages through the integrated CDC backend APIs.],
-
-    [6],
-    [Search Email],
-    align(left)[The system shall allow users to search email messages by sender, subject, or keywords.],
-
-    [7],
+    [3],
     [Investor Contact Scanning],
     align(left)[The system shall capture an image from the device camera and extract contact data such as name, company, phone number, and email address.],
 
-    [8],
+    [4],
     [Investor Contact Review and Edit],
     align(left)[The system shall allow users to review and correct OCR results before saving them.],
 
-    [9],
+    [5],
     [Investor Contact Storage],
     align(left)[The system shall save validated contact information into the system for future communication use.],
 
-    [10],
-    [Follow-up Reminder],
-    align(left)[The system shall allow users to create and manage follow-up reminders related to investor contacts or email threads.],
-
-    [11],
+    [6],
     [AI Assistance],
     align(left)[The system shall support AI-based drafting or response suggestions for selected email messages.],
 
-    [12],
+    [7],
     [Notification Handling],
     align(left)[The system shall notify users about pending follow-ups, important messages, or system events.],
 
-    [14],
+    [8],
     [Language Preference],
     align(left)[The system shall support application localization and allow switching between Khmer and English.],
   ),
@@ -107,53 +50,77 @@ Functional requirements define what the system must do from the user perspective
 ) <fr_table>
 // @typstyle on
 
+#pagebreak(weak: true)
 
-@fr_table summarizes the core features required for the initial internship implementation. The selected
-requirements focus on practicality and direct value for CDC staff workflows.
-
-== Non-Functional Requirements
-
-Non-functional requirements define how the system should behave in terms of quality, security, and maintainability.
+=== Non-Functional Requirements
+- *Multi-lingual Support:* The system must allow users to toggle between Khmer and English instantly, ensuring all system messages, data categories, and UI labels are localized.
+- *Security (Contextual Trust):* The system must implement token-based authentication (JWT) and a "Trust Engine" that evaluates session metadata (IP, location, and device ID) to protect sensitive government data.
+- *Performance (Cursor-Based Pagination):* To handle high-velocity email feeds without latency, the system must utilize cursor-based pagination to ensure a stable and fluid scrolling experience.
+- *Scalability (Adapter Architecture):* The backend must be provider-agnostic, utilizing the Adapter Design Pattern to allow the integration of new email services without structural code changes.
+- *Usability:* The interface must adhere to the provided design documentation provided by the company to ensure consistent design and facilitate the usability of CDC staffs.
 
 // @typstyle off
 #figure(
   table(
-    columns: (18%, 82%),
-    table.header([*Category*], [*Requirement*]),
-
-    [Performance],
-    align(left)[The application should load the inbox screen within a few seconds under normal network conditions and avoid unnecessary UI blocking during API requests.],
+    columns: (1fr, 4fr),
+    inset: 6pt,
+    align: center + horizon,
+    table.header([*Feature*], [*Description*]),
 
     [Usability],
-    align(left)[The user interface should be simple, readable, and optimized for mobile use by non-technical and technical staff alike. Important actions should be reachable with minimal taps.],
+    align(
+      left,
+    )[The user interface should be simple, readable, and optimized for mobile use by non-technical and technical staff alike. Important actions should be reachable with minimal taps.],
 
     [Security],
-    align(left)[The system should use token-based authentication (JWT), secure API communication over HTTPS, and protected local storage for sensitive session data.],
+    align(
+      left,
+    )[The system should use token-based authentication (JWT), secure API communication over HTTPS, and protected local storage for sensitive session data.],
 
     [Reliability],
-    align(left)[The system should handle network failures gracefully by providing clear feedback and retry options without crashing.],
+    align(
+      left,
+    )[The system should handle network failures gracefully by providing clear feedback and retry options without crashing.],
 
     [Maintainability],
-    align(left)[The codebase should follow a modular architecture with clear separation between data models, services, state management, and UI components.],
+    align(
+      left,
+    )[The codebase should follow a modular architecture with clear separation between data models, services, state management, and UI components.],
 
     [Scalability],
-    align(left)[The design should support future additions such as calendar integration, investor tagging, analytics, and advanced AI modules.],
+    align(
+      left,
+    )[The design should support future additions such as calendar integration, investor tagging, analytics, and advanced AI modules.],
 
     [Compatibility],
     align(left)[The mobile application should run on modern Android and iOS devices used by CDC staff.],
 
     [Localization],
-    align(left)[The system should support Khmer and English text resources and be designed to allow adding more languages in the future.],
+    align(
+      left,
+    )[The system should support Khmer and English text resources and be designed to allow adding more languages in the future.],
   ),
   caption: "Non-Functional Requirements",
 ) <nfr_table>
 // @typstyle on
 
-#pagebreak()
-
 == Use Case Analysis
+To understand the interaction between CDC officials and the cdcIRM ecosystem, the following primary use cases were identified:
 
-Use case analysis explains how different users interact with the system to achieve their tasks.
+=== Account Linking
+#figure(
+  image("../media/empty.png", height: 30%),
+  caption: "Account Linking Use Case Diagram",
+)<UC-1>
+@UC-1 Outlines CDC official authenticates via the CDC internal portal and links their professional Gmail or Outlook account via a secure OAuth2 handshake.
+
+=== Scanning Business Cards
+#figure(
+  image("../media/empty.png", height: 30%),
+  caption: "Business Card Scanning Use Case Diagram",
+)<UC-2>
+@UC-2 During an investment forum, an official scans an investor's business card using the OCR module, which automatically populates the CDC's centralized investor database.
+
 
 === Primary Actor
 The primary actor of the system is:
@@ -165,45 +132,6 @@ The primary actor of the system is:
 - *OCR Engine:* Extracts text from captured business card or ID images.
 - *Notification Service:* Delivers local or push notifications for reminders and updates.
 - *AI Service:* Generates drafting suggestions and follow-up assistance.
-
-=== Main Use Cases
-
-// @typstyle off
-#figure(
-  table(
-    columns: (25%, 75%),
-    table.header([*Use Case*], [*Description*]),
-
-    [Login],
-    align(left)[User authenticates with CDC credentials and obtains a secure session token.],
-
-    [View Inbox],
-    align(left)[User opens the inbox and reviews incoming messages from investors or partners.],
-
-    [Read Email],
-    align(left)[User opens a message to read full content and take an action (reply, forward, archive, etc.).],
-
-    [Compose Email],
-    align(left)[User creates a new message or replies to an existing email thread.],
-
-    [Scan Contact],
-    align(left)[User scans a business card or ID using the camera to capture contact details automatically.],
-
-    [Save Contact],
-    align(left)[User verifies OCR result and saves the contact into the system.],
-
-    [Create Follow-up],
-    align(left)[User creates a reminder linked to a contact or conversation for future action.],
-
-    [Receive Reminder],
-    align(left)[System notifies user when a scheduled follow-up is due.],
-
-    [AI Draft Suggestion],
-    align(left)[User requests an AI-generated draft or response suggestion for an email.],
-  ),
-  caption: "Main Use Cases",
-) <use_case_table>
-// @typstyle on
 
 === Use Case Diagram (Conceptual)
 

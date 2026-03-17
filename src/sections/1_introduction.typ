@@ -1,9 +1,6 @@
 = INTRODUCTION
 
-The internship program is a well known bachelor's programs at the Institute of Digital
-Technology (IDT), Cambodia Academy of Digital Technology (CADT). This program puts
-students into real world work experience related to their field. This report will cover what I
-have accomplished and learned during this whole process.
+The internship program is a well known bachelor's programs at the Institute of Digital Technology (IDT), Cambodia Academy of Digital Technology (CADT). This program puts students into real world work experience related to their field. This report will cover what I have accomplished and learned during this whole process.
 
 == Presentation of the Internship
 I conducted my internship at the Council for the Development of Cambodia (CDC) within the Information Technology and Public Relation Directorate (ITPR). I was tasked with the end-to-end development of a sophisticated mobile email client specifically engineered for government officials to manage investor relations.
@@ -14,7 +11,10 @@ The project, titled "cdcIRM", aims to revolutionize how the CDC interacts with i
 The primary objective of this internship, as outlined by the IDT guidelines, is to offer students golden opportunities to apply the knowledge and skills acquired during their academic studies to solve real-world problems. It provides a platform to experience a professional work environment, acquire new skills, and gain practical professional experience. Through such programs, students can better understand their work preferences, which helps them explore future career options effectively. Furthermore, internships offer significant benefits to host organizations, allowing them to observe and evaluate the student's technical knowledge, skills, and behavior for potential future employment.
 
 === Duration of Internship
-The internship commenced on January 5#super[th], 2026, and concluded on May 5#super[th], 2026, spanning a total of four months (16 weeks). In accordance with the CADT Year 4 curriculum requirements, I completed a minimum of 640 hours. This duration allowed for a full development cycle: from initial requirement gathering and UI prototyping to backend integration and final debugging.
+The internship commenced on January 5#super[th], 2026, and concluded on July 5#super[th], 2026, spanning a total of six months (24 weeks). In accordance with the CADT Year 4 curriculum requirements, I completed a minimum of 960 hours.
+
+#pagebreak(weak: true);
+
 == Presentation of Organization
 This section introduces the organization where I completed my internship. It includes basic information about the organization, its version and mission, and how it is structured. Understanding the role of organization helps explain how my internship project supports its overall goals.
 
@@ -29,11 +29,8 @@ The internship took place at The *Council for the Development of Cambodia (CDC)*
 === Service of the Organization
 The CDC provides essential services to ensure economic stability and growth:
 - Investment Project Management: Evaluating and approving Qualified Investment Projects (QIPs).
-
 - Strategic Coordination: Managing Official Development Assistance (ODA) and partnering with international donors for infrastructure development.
-
 - Special Economic Zones (SEZs): Overseeing the legal and operational frameworks of industrial hubs.
-
 - Investor Aftercare: Providing ongoing support to ensure the success and retention of foreign and local investments.
 
 === Vision and Mission
@@ -59,3 +56,18 @@ The Council for the Development of Cambodia is located at:
 - Phone: #link("tel:+85523981154", "(+855) 23 981 154") / #link("tel:+85523427597", "(+855) 23 427 597")
 - Website: #link("https://cdc.gov.kh/", "www.cdc.gov.kh")
 - Email: #link("mailto:info@cdc.gov.kh", "info@cdc.gov.kh")
+
+== Project Definition and Scope
+*cdcIRM* (CDC Investor Relations Management) is a specialized communication platform designed to serve as a digital bridge between the Council for the Development of Cambodia and global investors. While traditional email clients are built for general-purpose correspondence, this project is engineered for "High-Velocity Investor Relations," providing a focused environment for government-to-business (G2B) interactions.
+
+=== Problem Statement and Conceptual Rationale
+Currently, official correspondence is often fragmented across various platforms, leading to "context-switching" fatigue and potential delays in response times. cdcIRM addresses this by aggregating disparate email services into a single, unified, and intelligent interface. It moves beyond traditional email by integrating productivity tools such as OCR-based contact scanning and automated follow-up logic, ensuring the CDC maintains the precision expected by modern global investors.
+
+The application focuses on three core pillars:
+- *Immediacy:* Reducing the time spent on data entry and navigation.
+- *Intelligence:* Assisting staff in maintaining relationships through automated reminders.
+- *Integration:* Connecting directly with CDC's backend infrastructure while maintaining government-grade security protocols.
+
+=== Targeted Impact
+By centralizing communication and contact management, cdcIRM aims to revolutionize the CDC's internal workflows. This project supports the organization's objective of promoting transparency and national competitiveness on the global stage, ensuring that Cambodia remains an attractive hub for sustainable development.
+

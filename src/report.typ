@@ -3,9 +3,11 @@
 #show figure.where(kind: image): set figure.caption(position: bottom)
 #show figure.where(kind: table): set figure.caption(position: top)
 
+#let muted_blue = oklab(60%, -0.02, -0.14);
+
 #show figure.caption: set text(size: 10pt, style: "italic")
 
-#show link: set text(fill: blue)
+#show link: set text(fill: muted_blue)
 #show link: underline
 
 #let header-numbering(..number) = {
@@ -83,6 +85,35 @@
   )
 }
 
+#show cite: it => {
+  text(fill: muted_blue, super(it))
+}
+
+#show ref: it => {
+  text(fill: muted_blue, it)
+}
+
+#show raw.where(block: false): it => {
+  box(
+    fill: oklab(97.52%, -0.001, -0.003),
+    inset: (x: 3pt),
+    outset: (y: 3pt),
+    radius: 3pt,
+    stroke: 0.5pt + luma(240),
+    text(fill: oklab(20%, -0.000, -0.100), it, font: "Fira Code Retina"),
+  )
+}
+#show raw.where(block: true): it => {
+  box(
+    fill: oklab(97.52%, -0.001, -0.003),
+    stroke: 0.5pt + luma(240),
+    inset: 10pt,
+    radius: 6pt,
+    width: 100%,
+    it,
+  )
+}
+
 #set page(
   numbering: "1",
 )
@@ -90,9 +121,7 @@
 
 #include "sections/1_introduction.typ"
 
-#include "sections/2_presentation.typ"
-
-#include "sections/3_literature.typ"
+#include "sections/2_literature.typ"
 
 #include "sections/4_project_analysis.typ"
 
