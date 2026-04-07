@@ -1,6 +1,10 @@
 {
     "editor.wordWrap": "on",
     "cSpell.words": [
-        "pagebreak"
+        "CADT",
+        "headerline",
+        "luma",
+        "pagebreak",
+        "taskgroup"
     ]
 }

@@ -13,10 +13,10 @@ I also would like to thank the Department of Computer Science and Career Center 
 Finally, I would like to thank my friends and family for their support, especially the friends who also happen to take this internship program at CDC.
 
 = មូលន័យសង្ខេប
-ក្នុងគម្រោងនេះ ខ្ញុំបានអភិវឌ្ឍ
+ក្នុងគម្រោងនេះ ខ្ញុំបានអភិវឌ្ឍ...
 
 = ABSTRACT
-#lorem(300)
+...
 
 = TABLE OF CONTENTS
 #outline(title: none, indent: 0.25in)
@@ -33,6 +33,6 @@ Finally, I would like to thank my friends and family for their support, especial
   inset: 10pt,
   align: center,
   table.header([*Abbreviation*], [*Explanation*]),
-  [CADT], [Cambodia Academy of Digital Technology], // Copy this line
+  [CADT], [Cambodia Academy of Digital Technology],
 )
 

@@ -15,7 +15,7 @@ The internship commenced on January 5#super[th], 2026, and concluded on July 5#s
 
 #pagebreak(weak: true);
 
-== Presentation of Organization
+== Presentation of the Organization
 This section introduces the organization where I completed my internship. It includes basic information about the organization, its version and mission, and how it is structured. Understanding the role of organization helps explain how my internship project supports its overall goals.
 
 === General Information of the Organization

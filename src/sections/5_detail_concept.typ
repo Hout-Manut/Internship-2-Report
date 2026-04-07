@@ -121,18 +121,7 @@ The physical architecture contains the following main nodes:
 - *AI Service:* Provides smart drafting assistance
 
 #figure(
-  align(center)[
-    #box(
-      inset: 10pt,
-      radius: 6pt,
-      stroke: luma(180),
-      fill: luma(248),
-      width: 100%,
-      [
-        *Physical Architecture Diagram Placeholder*
-      ],
-    )
-  ],
+  image("../media/empty.png", height: 30%),
   caption: "Physical Architecture of the cdcIRM System (Placeholder)",
 )
 
@@ -209,27 +198,6 @@ The table below summarizes the major technology requirements.
 Flutter is the main framework used to develop the *cdcIRM* mobile application.
 It supports cross-platform development, allowing the same codebase to run on
 both Android and iOS devices with consistent UI and behavior.
-
-==== REST API and JSON
-
-#figure(
-  align(center)[
-    #box(
-      inset: 8pt,
-      radius: 6pt,
-      stroke: luma(180),
-      fill: luma(248),
-      [
-        *API / JSON Logo Placeholder*
-
-      ],
-    )
-  ],
-)
-
-The application communicates with the CDC backend through RESTful APIs using JSON
-as the data exchange format. This approach is lightweight, widely supported, and
-easy to integrate with mobile applications and backend services.
 
 ==== JWT Authentication
 

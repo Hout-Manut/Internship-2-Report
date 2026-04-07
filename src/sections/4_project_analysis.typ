@@ -138,30 +138,29 @@ The primary actor of the system is:
 The formal use case diagram can be inserted as a figure in the final report. For documentation clarity,
 the actor-to-use-case relationships are listed below.
 
-- *CDC Staff User* `->` Login, View Inbox, Read Email, Compose Email
-- *CDC Staff User* `->` Scan Contact, Save Contact, Create Follow-up, Receive Reminder
-- *CDC Staff User* `->` AI Draft Suggestion (optional)
-- *CDC Backend API* `<->` Authentication, Email Sync, Contact Storage
-- *OCR Engine* `<->` Scan Contact
-- *Notification Service* `<->` Receive Reminder
-- *AI Service* `<->` AI Draft Suggestion
+#{
+  show raw.where(block: false): it => {
+    box(
+      fill: none,
+      inset: (x: 3pt),
+      text(fill: oklab(30%, -0.000, -0.050), it.text, font: "Fira Code Retina"),
+    )
+  }
+  [
+    - *CDC Staff User* `->` Login, View Inbox, Read Email, Compose Email
+    - *CDC Staff User* `->` Scan Contact, Save Contact, Create Follow-up, Receive Reminder
+    - *CDC Staff User* `->` AI Draft Suggestion
+    - *CDC Backend API* `<->` Authentication, Email Sync, Contact Storage
+    - *OCR Engine* `<->` Scan Contact
+    - *Notification Service* `<->` Receive Reminder
+    - *AI Service* `<->` AI Draft Suggestion
+  ]
+}
 
 // TODO
 #figure(
-  align(center)[
-    #box(
-      inset: 10pt,
-      radius: 6pt,
-      stroke: luma(180),
-      fill: luma(248),
-      width: 100%,
-      [
-        *Use Case Diagram Placeholder*
-
-      ],
-    )
-  ],
-  caption: "Use Case Diagram of cdcIRM (Conceptual Placeholder)",
+  image("../media/empty.png", height: 30%),
+  caption: "Use Case Diagram of cdcIRM (Placeholder)",
 ) <use_case_diagram>
 
 == Process Flow and Activity Concepts
@@ -183,19 +182,7 @@ This section describes the main activity flow of the application from login to c
 
 // TODO
 #figure(
-  align(center)[
-    #box(
-      inset: 10pt,
-      radius: 6pt,
-      stroke: luma(180),
-      fill: luma(248),
-      width: 100%,
-      [
-        *Activity Diagram Placeholder*
-
-      ],
-    )
-  ],
+  image("../media/empty.png", height: 30%),
   caption: "Activity Diagram for Main User Workflow (Placeholder)",
 ) <activity_diagram>
 
@@ -211,33 +198,21 @@ The system revolves around the following core entities:
 
 - *User:* CDC staff account and profile information
 - *Message:* Email metadata and content
-- *Contact:* Investor or stakeholder contact details
+- *Entity:* Investor or company details
 - *Attachment (optional):* File metadata associated with emails
 - *Audit Fields:* Created/updated timestamps for traceability
 
 === Conceptual Entity Relationships
 
-- One *User* can manage many *Contacts*
+- One *User* can access many *Mailboxes*
 - One *User* can create many *Follow-up Reminders*
-- One *Contact* can be linked to many *Email Messages*
+- One *Entity* can be linked to many *Email Messages*
 - One *Email Message* can contain multiple *Attachments*
-- One *Follow-up Reminder* may reference a *Contact* and/or an *Email Message*
+- One *Follow-up Reminder* may reference a *Entity* and/or an *Email Message*
 
 // TODO
 #figure(
-  align(center)[
-    #box(
-      inset: 10pt,
-      radius: 6pt,
-      stroke: luma(180),
-      fill: luma(248),
-      width: 100%,
-      [
-        *Database Table Relations Placeholder*
-
-      ],
-    )
-  ],
+  image("../media/empty.png", height: 30%),
   caption: "Database Table (Placeholder)",
 ) <database_table_diagram>
 
@@ -258,14 +233,9 @@ The following design principles are important for this project:
     columns: (22%, 18%, 20%, 40%),
     table.header([*Table*], [*Field*], [*Type*], [*Description*]),
 
-    [users], [id], [UUID / String], [Unique identifier of CDC staff user.],
-    [users], [language], [String], [Preferred app language (e.g., "en", "km").],
-
-    [contacts], [source], [String], [Indicates how the contact was created: manual or OCR scan.],
-    [contacts], [email], [String], [Primary investor contact email address.],
-
-    [messages], [thread_id], [String], [Groups related messages into one conversation thread.],
-    [messages], [is_read], [Boolean], [Read/unread state for UI display.],
+    [user], [id], [UUID / String], [Unique identifier of CDC staff user.],
+    [message], [thread_id], [String], [Groups related messages into one conversation thread.],
+    [message], [is_read], [Boolean], [Read/unread state for UI display.],
   ),
   caption: "Selected Data Dictionary",
 ) <data_dictionary>
