@@ -1,18 +1,27 @@
 from pathlib import Path
 from typing import Sequence
+from pypdf import PdfReader, PdfWriter
 
-from PyPDF2 import PdfMerger
 
+def merge_pdfs_with_header_overlay(
+    header_path: Path,
+    body_path: Path,
+    output_path: Path,
+) -> None:
+    header_reader = PdfReader(str(header_path))
+    body_reader = PdfReader(str(body_path))
+    writer = PdfWriter()
 
-def merge_pdfs(input_paths: Sequence[Path], output_path: Path) -> None:
-    merger = PdfMerger()
-    try:
-        for path in input_paths:
-            merger.append(str(path))
-        with output_path.open("wb") as out:
-            merger.write(out)
-    finally:
-        merger.close()
+    header_page_count = len(header_reader.pages)
+
+    for i, body_page in enumerate(body_reader.pages):
+        if i < header_page_count:
+            # Merge header page on top of the corresponding body page
+            body_page.merge_page(header_reader.pages[i])
+        writer.add_page(body_page)
+
+    with output_path.open("wb") as out:
+        writer.write(out)
 
 
 if __name__ == "__main__":
@@ -21,4 +30,4 @@ if __name__ == "__main__":
     body_file = output_dir / "report-body.pdf"
     output_file = output_dir.parent / "report.pdf"
 
-    merge_pdfs([header_file, body_file], output_file)
+    merge_pdfs_with_header_overlay(header_file, body_file, output_file)

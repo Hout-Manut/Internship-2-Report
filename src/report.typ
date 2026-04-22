@@ -1,3 +1,12 @@
+// Place holder for the actual pages,
+// the concat.py script will override these 3 pages
+// with the real one so that urls won't be misaligned
+Cover
+#pagebreak()
+Title Khmer
+#pagebreak()
+Title English
+#pagebreak()
 
 // Figures formatting
 #show figure.where(kind: image): set figure.caption(position: bottom)
@@ -121,15 +130,17 @@
 
 #include "sections/1_introduction.typ"
 
-#include "sections/2_literature.typ"
+#include "sections/2_project_definition.typ"
 
-#include "sections/4_project_analysis.typ"
+#include "sections/3_literature.typ"
 
-#include "sections/5_detail_concept.typ"
+#include "sections/5_project_analysis.typ"
 
-#include "sections/6_implementation.typ"
+#include "sections/6_detail_concept.typ"
 
-#include "sections/7_conclusion.typ"
+#include "sections/7_implementation.typ"
+
+#include "sections/8_conclusion.typ"
 
 #set heading(numbering: none)
 #show heading: it => {
@@ -149,4 +160,3 @@
 )
 
 = APPENDICES
-

@@ -2,7 +2,7 @@
 = ACKNOWLEDGEMENT
 First and foremost, I want to thank everyone that has helped me during this Internship I period. As this would not be possible without them.
 
-I would like to express my deepest gratitude for the internship opportunity granted by *H.E. Mr. Heang Sotheayuth*, Deputy Secretary General of The Council for the Development of Cambodia (CDC). and to the president, *H.E. Dr. Seng Sopheap*, and vice-president, *H.E. Hean Samboeun*, of Cambodia Academy of Digital Technology (CADT) for making it possible for us to participate and study for our bachelor’s degree program at CADT.
+I would like to express my deepest gratitude for the internship opportunity granted by *H.E. Mr. Heang Sotheayuth*, Deputy Secretary General of The Council for the Development of Cambodia (CDC). and to the president, *H.E. Dr. Seng Sopheap*, and vice-president, *H.E. Hean Samboeun*, of Cambodia Academy of Digital Technology (CADT) for making it possible for us to participate and study for our bachelor's degree program at CADT.
 
 I want to thank my advisor, \_\_\_, for his valuable guidance and advice. Which has helped me a lot in understanding this Internship II program.
 
