@@ -240,6 +240,66 @@ The following design principles are important for this project:
   caption: "Selected Data Dictionary",
 ) <data_dictionary>
 
+== System Architecture
+
+The project follows a Decoupled Architecture to ensure maintainability and scalability.
+
+== Project Timeline
+
+// @typstyle off
+#figure(
+  align(center)[
+    #set text(size: 10pt)
+
+    #let task-row(..weeks) = (
+      ..weeks
+        .pos()
+        .map(w => {
+          if w == [x] {
+            table.cell(fill: rgb("#fede6a"))[]
+          } else {
+            []
+          }
+        }),
+    )
+
+    #table(
+      columns: (25%, ..(3.125%,) * 24),
+      table.header(
+        table.cell(align: center, rowspan: 2)[#strong[Tasks]],
+        table.cell(align: center, colspan: 24)[#strong[Weeks]],
+        ..range(1, 25).map(i => table.cell(align: center)[#strong[#i]]),
+      ),
+
+      // Tasks
+      table.cell(align: left)[Requirement Analysis],
+      ..task-row([x], [x], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ]),
+
+      table.cell(align: left)[Setup Project],
+      ..task-row([ ], [ ], [x], [x], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ]),
+
+      table.cell(align: left)[Development Phase],
+      ..task-row([ ], [ ], [ ], [ ], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [ ], [ ]),
+
+      table.cell(align: left)[Testing],
+      ..task-row([ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x]),
+
+      table.cell(align: left)[Bug Fixes and UAT],
+      ..task-row([ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x]),
+
+      table.cell(align: left)[Documentation],
+      ..task-row([x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x], [x]),
+    )
+  ],
+  caption: "Activities timeline",
+) <activity_table>
+// @typstyle on
+
+// #include "../components/timeline.typ"
+
+(DRAFT) @activity_table Outlines the timeline for the entire Internship 2 project span.
+For the first month, I spent most of the time initializing the project—including the file structure, dependencies and others.
+
 == Analysis of Technical Architecture
 
 To support maintainability and future growth, the mobile application adopts a layered architecture.

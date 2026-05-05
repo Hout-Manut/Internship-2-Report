@@ -1,11 +1,11 @@
 // Place holder for the actual pages,
 // the concat.py script will override these 3 pages
 // with the real one so that urls won't be misaligned
-Cover
+// Cover
 #pagebreak()
-Title Khmer
+// Title Khmer
 #pagebreak()
-Title English
+// Title English
 #pagebreak()
 
 // Figures formatting
@@ -133,6 +133,8 @@ Title English
 #include "sections/2_project_definition.typ"
 
 #include "sections/3_literature.typ"
+
+// #include "sections/4_presentation.typ"
 
 #include "sections/5_project_analysis.typ"
 
